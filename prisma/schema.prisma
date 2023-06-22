@@ -1,0 +1,69 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  password  String
+  image     String?
+  role      Role     @default(BASIC)
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Job {
+  id             String @id @default(uuid())
+  company        String
+  logo           String
+  logoBackground String
+  position       String
+  postedAt       String
+  contract       String
+  location       String
+  website        String
+  apply          String
+  description    String
+  // jobreqid       String?       @unique
+  // jobroleid      String?       @unique
+  requirements   Json?
+  role           Json?
+}
+
+// "requirements": {
+//       "content": "The ideal candidate is as passionate about solving challenges through technology. They are well-versed in building proof of concepts from scratch and taking these POCs to production and scale. The right fit will have the engineering experience to build and iterate quickly and is comfortable working with product and design to set the technical strategy and roadmap.",
+//       "items": [
+//         "5+ years of industry experience in a software engineering role, preferably building a SaaS product. You can demonstrate significant impact that your work has had on the product and/or the team.",
+//         "Experience with scalable distributed systems, both built from scratch as well as on AWS primitives.",
+//         "Extremely data-driven.",
+//         "Ability to debug complex systems."
+//       ]
+//     },
+
+// model Requirements {
+//   id      String   @id @default(uuid())
+//   content String
+//   items   String[]
+//   job     Job?
+// }
+
+// model Role {
+//   id      String   @id @default(uuid())
+//   content String
+//   items   String[]
+//   Job     Job?
+// }
+
+enum Role {
+  BASIC
+  ADMIN
+}
