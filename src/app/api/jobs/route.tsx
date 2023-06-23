@@ -39,7 +39,7 @@ export async function GET(req: Request) {
     return NextResponse.json({ jobs });
 
   } catch (error) {
-    return new NextResponse('something went wrong', {status:404});
+    return new NextResponse('something went wrong check', {status:404});
   }
 }
 

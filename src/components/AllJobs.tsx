@@ -1,9 +1,7 @@
 import React from 'react'
 import SearchFilters from './SearchFilters'
 import JobsList from './JobsList'
-import { getJobs } from '@/lib/getJobs'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+
 
 export default async function AllJobs() {
 
