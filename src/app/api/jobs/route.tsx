@@ -12,11 +12,11 @@ export async function GET(req: Request) {
     const lastId = searchParams.get('lastId')
     const searchTerm = searchParams.get('search')
 
-    const headers = req.headers.get('Fazeportal')
-    const verifiedToken = verifyJwt(headers!)
-    if(!verifiedToken) {
-      return new NextResponse('unauthorized', {status:401})
-    }
+    // const headers = req.headers.get('Fazeportal')
+    // const verifiedToken = verifyJwt(headers!)
+    // if(!verifiedToken) {
+    //   return new NextResponse('unauthorized', {status:401})
+    // }
   
     
     // const jobs:Job[] | any = jobsData
