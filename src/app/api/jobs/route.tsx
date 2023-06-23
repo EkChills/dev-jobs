@@ -11,30 +11,30 @@ export async function GET (req: Request) {
   const searchTerm = searchParams.get('search')
   try {
 
-    // const headers = req.headers.get('Fazeportal')
-    // const verifiedToken = verifyJwt(headers!)
-    // if(!verifiedToken) {
-    //   return new NextResponse('unauthorized', {status:401})
-    // }
+    const headers = req.headers.get('Fazeportal')
+    const verifiedToken = verifyJwt(headers!)
+    if(!verifiedToken) {
+      return new NextResponse('unauthorized', {status:401})
+    }
   
     
-    const jobs:Job[] | any = jobsData
-    // const jobs:Job[] = await prisma.job.findMany({
-    //   take: 9,
-    //   skip:lastId ? 1 : 0,
-    //   cursor: lastId ? {
-    //     id:lastId!
-    //   } : undefined
-    // });
+    // const jobs:Job[] | any = jobsData
+    const jobs:Job[] = await prisma.job.findMany({
+      take: 9,
+      skip:lastId ? 1 : 0,
+      cursor: lastId ? {
+        id:lastId!
+      } : undefined
+    });
 
-    // if(searchTerm) {
-    //   const filteredJobs = jobs.filter((job:Job) => job.position.toLowerCase().replace('-', '').startsWith(searchTerm.toLowerCase()))
-    //   console.log(jobs);
-    //   console.log(filteredJobs); 
-    //   console.log(searchTerm);
+    if(searchTerm) {
+      const filteredJobs = jobs.filter((job:Job) => job.position.toLowerCase().replace('-', '').startsWith(searchTerm.toLowerCase()))
+      console.log(jobs);
+      console.log(filteredJobs); 
+      console.log(searchTerm);
       
-    //   return NextResponse.json({ jobs:filteredJobs });
-    // }
+      return NextResponse.json({ jobs:filteredJobs });
+    }
     return NextResponse.json({ jobs });
 
   } catch (error) {
