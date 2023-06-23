@@ -39,6 +39,8 @@ export async function GET(req: Request) {
     return NextResponse.json({ jobs });
 
   } catch (error) {
+    console.log(error);
+    
     return new NextResponse('something went wrong check', {status:404});
   }
 }
