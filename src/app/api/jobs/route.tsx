@@ -7,15 +7,15 @@ import { verifyJwt } from "@/lib/jwt";
 
 export async function GET (req: Request) {
   try {
-    const {searchParams} = new URL(req.url)
-    const lastId = searchParams.get('lastId')
-    const searchTerm = searchParams.get('search')
+    // const {searchParams} = new URL(req.url)
+    // const lastId = searchParams.get('lastId')
+    // const searchTerm = searchParams.get('search')
 
-    const headers = req.headers.get('Fazeportal')
-    const verifiedToken = verifyJwt(headers!)
-    if(!verifiedToken) {
-      return new NextResponse('unauthorized', {status:401})
-    }
+    // const headers = req.headers.get('Fazeportal')
+    // const verifiedToken = verifyJwt(headers!)
+    // if(!verifiedToken) {
+    //   return new NextResponse('unauthorized', {status:401})
+    // }
   
     
     const jobs:Job[] | any = jobsData
@@ -27,14 +27,14 @@ export async function GET (req: Request) {
     //   } : undefined
     // });
 
-    if(searchTerm) {
-      const filteredJobs = jobs.filter((job:Job) => job.position.toLowerCase().replace('-', '').startsWith(searchTerm.toLowerCase()))
-      console.log(jobs);
-      console.log(filteredJobs); 
-      console.log(searchTerm);
+    // if(searchTerm) {
+    //   const filteredJobs = jobs.filter((job:Job) => job.position.toLowerCase().replace('-', '').startsWith(searchTerm.toLowerCase()))
+    //   console.log(jobs);
+    //   console.log(filteredJobs); 
+    //   console.log(searchTerm);
       
-      return NextResponse.json({ jobs:filteredJobs });
-    }
+    //   return NextResponse.json({ jobs:filteredJobs });
+    // }
     return NextResponse.json({ jobs });
 
   } catch (error) {
