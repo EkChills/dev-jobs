@@ -1,4 +1,3 @@
-import { NextApiRequest } from "next";
 import { prisma } from "../../../../prisma/prisma";
 import { NextResponse } from "next/server";
 import jobsData from "../../data.json";
@@ -6,7 +5,7 @@ import jobsData from "../../data.json";
 import { Job } from "@prisma/client";
 import { verifyJwt } from "@/lib/jwt";
 
-export async function GET(req: Request) {
+export async function GET (req: Request) {
   try {
     const {searchParams} = new URL(req.url)
     const lastId = searchParams.get('lastId')
@@ -41,7 +40,9 @@ export async function GET(req: Request) {
   } catch (error) {
     console.log(error);
     
-    return new NextResponse('something went wrong check', {status:404});
+    return new NextResponse(JSON.stringify({
+      msg:'something went wrong'
+    }), {status:404});
   }
 }
 
