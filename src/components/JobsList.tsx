@@ -6,9 +6,9 @@ import ListContainerAnimate from './Providers/ListContainer'
 
 export default async function JobsList() {
 const session = await getServerSession(authOptions)
-  
+const baseUrl = process.env.NODE_ENV === 'production' ? 'https://dev-jobs-d.vercel.app' : 'http://localhost:3000'  
 const getJobs = async(token:string):Promise<Job[]> => {
-  const resp = await fetch('http://localhost:3000/api/jobs', {
+  const resp = await fetch(`${baseUrl}/api/jobs`, {
     headers:{
       Fazeportal:token
     }
