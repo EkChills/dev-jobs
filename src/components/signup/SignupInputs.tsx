@@ -36,10 +36,11 @@ export default function SignupInputs() {
     return () => clearTimeout(passwordTimeout)
   }, [showPassword])
 
+  const baseUrl = process.env.NODE_ENV === 'production' ? 'https://dev-jobs-d.vercel.app' : 'http://localhost:3000'
   async function handleSubmit(e:React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     try {
-      const resp = await axios.post('http://localhost:3000/api/auth/register', {
+      const resp = await axios.post(`${baseUrl}/api/auth/register`, {
         ...inputData
       })
       toast.success('account registered successfully')

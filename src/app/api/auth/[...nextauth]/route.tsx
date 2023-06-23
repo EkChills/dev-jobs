@@ -25,8 +25,8 @@ export const authOptions:AuthOptions = {
       },
       async authorize(credentials, req) {
         // Add logic here to look up the user from the credentials supplied
-        
-        const user = await fetch('http://localhost:3000/api/auth/login', {
+        const baseUrl = process.env.NODE_ENV === 'production' ? 'https://dev-jobs-d.vercel.app' : 'http://localhost:3000'
+        const user = await fetch(`${baseUrl}/api/auth/login`, {
         method:"POST",
         body:JSON.stringify({email:credentials?.email, password:credentials?.password})
        }).then(res => res.json())
@@ -41,7 +41,8 @@ export const authOptions:AuthOptions = {
     })
   ],
   pages:{
-    signIn:'/login'
+    signIn:'/login',
+    newUser:'/signup'
   },
   session:{
     strategy:"jwt"
