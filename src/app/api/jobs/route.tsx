@@ -6,10 +6,10 @@ import { Job } from "@prisma/client";
 import { verifyJwt } from "@/lib/jwt";
 
 export async function GET (req: Request) {
+  const {searchParams} = new URL(req.url)
+  const lastId = searchParams.get('lastId')
+  const searchTerm = searchParams.get('search')
   try {
-    const {searchParams} = new URL(req.url)
-    const lastId = searchParams.get('lastId')
-    const searchTerm = searchParams.get('search')
 
     // const headers = req.headers.get('Fazeportal')
     // const verifiedToken = verifyJwt(headers!)
