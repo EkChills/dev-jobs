@@ -5,7 +5,6 @@ import React, { Suspense } from "react";
 import SearchFilters from "./SearchFilters";
 import JobsList from "./JobsList";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export default async function AllJobs() {
   return (

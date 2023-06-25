@@ -3,7 +3,6 @@
 import React, { useState } from 'react'
 import JobCard from './JobCard'
 import { getServerSession } from 'next-auth'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 import ListContainerAnimate from './Providers/ListContainer'
 import { useSession } from 'next-auth/react'
 import useSwrInfinite from 'swr/infinite'
