@@ -11,11 +11,11 @@ export async function GET (req: Request) {
   const searchTerm = searchParams.get('search')
   try {
 
-    const headers = req.headers.get('Fazeportal')
-    const verifiedToken = verifyJwt(headers!)
-    if(!verifiedToken) {
-      return new NextResponse('unauthorized', {status:401})
-    }
+    // const headers = req.headers.get('Fazeportal')
+    // const verifiedToken = verifyJwt(headers!)
+    // if(!verifiedToken) {
+    //   return new NextResponse('unauthorized', {status:401})
+    // }
   
     
     // const jobs:Job[] | any = jobsData
@@ -27,15 +27,17 @@ export async function GET (req: Request) {
       } : undefined
     });
 
+    const nextCursor = jobs.length > 0 ? jobs[jobs.length - 1].id : null
+
     if(searchTerm) {
       const filteredJobs = jobs.filter((job:Job) => job.position.toLowerCase().replace('-', '').startsWith(searchTerm.toLowerCase()))
       console.log(jobs);
       console.log(filteredJobs); 
       console.log(searchTerm);
       
-      return NextResponse.json({ jobs:filteredJobs });
+      return NextResponse.json({ jobs:filteredJobs, nextCursor });
     }
-    return NextResponse.json({ jobs });
+    return NextResponse.json({ jobs,nextCursor });
 
   } catch (error) {
     console.log(error);
