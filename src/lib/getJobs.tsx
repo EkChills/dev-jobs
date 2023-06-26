@@ -16,12 +16,12 @@ export const getJobs = async(token:string):Promise<Job[]> => {
   return jobs as Job[]
 }
 
-export const getJob = async(jobId:string):Promise<Job> => {
+export const getJob = async(jobId:string):Promise<{job:Job}> => {
   const resp = await fetch(`http://localhost:3000/api/jobs/${jobId}`)
   const data = await resp.json()
 
   if(!resp.ok) {
     throw new Error('something went wrong while fetching')
   }
-  return data as Job
+  return data 
 }
