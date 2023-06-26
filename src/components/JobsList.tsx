@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import JobCard from './JobCard'
 import { getServerSession } from 'next-auth'
 import ListContainerAnimate from './Providers/ListContainer'
+import {useInfiniteQuery} from '@tanstack/react-query'
 import { useSession } from 'next-auth/react'
 import useSwrInfinite from 'swr/infinite'
 import axios from 'axios'
@@ -39,7 +40,9 @@ export default function JobsList() {
       
       setJobsList(data.jobs)
       return data
-    }
+    },
+    keepPreviousData:true,
+    retry:false
   })
 
   const fakeJobs = Array.from({length:10}, (_, index) => {
@@ -61,6 +64,7 @@ export default function JobsList() {
     } catch (error) {
       console.log(error);
       toast.error('cant load more something went wrong')
+      setJobLoading(false)
     } finally {
       setJobLoading(false)
     }
@@ -93,7 +97,7 @@ export default function JobsList() {
       }
     </ListContainerAnimate>
      <div className='flex w-full mt-[3rem] sm:mt-[3.5rem] hover:brightness-150 transition-all duration-300'>
-      <button className='w-[8.8125rem] h-[3rem] rounded-md bg-[#5964E0] flex justify-center items-center text-4 font-bold text-white text-center mx-auto' onClick={loadMoreJobs}>{jobLoading ? 'loading jobs' : 'Load More'}</button>
+      <button className='w-[8.8125rem] h-[3rem] rounded-md bg-[#5964E0] flex justify-center items-center text-4 font-bold text-white text-center mx-auto' onClick={loadMoreJobs}>{jobLoading ? 'loading jobs...' : 'Load More'}</button>
       </div>
     </>
   )
