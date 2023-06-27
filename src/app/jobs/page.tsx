@@ -2,7 +2,7 @@
 import React from 'react'
 import AllJobs from '@/components/AllJobs'
 
-export default function Posts() {
+export default function Jobs() {
   
   return (
     <div>

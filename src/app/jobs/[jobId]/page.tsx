@@ -1,5 +1,6 @@
 import { getJob } from '@/lib/getJobs'
 import { baseUrl } from '@/utils/baseUrl'
+import { error } from 'console'
 import React from 'react'
 
 
@@ -13,9 +14,15 @@ export async function generateStaticParams() {
 }
 
 
-export default async function page({params}:{params:{jobId:string}}) {
+export default async function SingleJob({params}:{params:{jobId:string}}) {
   const {jobId} = params
-  const singleJob = await getJob(jobId)
+  const res = await fetch(`${baseUrl}/api/jobs/${jobId}`)
+  if(!res.ok) {
+    throw new Error('something went wrong ')
+  }
+  const singleJob:{job:Job} = await res.json()
+
+
   
   return (
     <div className='min-h-screen pt-[13rem]'>

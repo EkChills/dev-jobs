@@ -35,7 +35,6 @@ export default function JobsList() {
     queryFn: async ({pageParam=null}) => {
       const res = await axios.get(`${baseUrl}/api/jobs?${pageParam ? `lastId=${pageParam}`: ''}`);
       const data: { jobs: Job[]; nextCursor: string } = await res.data;
-      console.log(data);
 
       const flattenedJobs = data.jobs.flatMap((jobs) => jobs) 
       setJobsList(flattenedJobs);
@@ -45,15 +44,17 @@ export default function JobsList() {
     retry: false,
   });
 
-  console.log(isLoading, isError, error);
 
-  const fakeJobs = Array.from({ length: 10 }, (_, index) => {
+  const fakeJobs = Array.from({ length: 9 }, (_, index) => {
     return { id: index };
   });
 
   const loadMoreJobs = async () => {
+    console.log(hasNextPage);
+    
     if(!hasNextPage) {
-      return toast.error('no more jobs to load')
+       toast.error('no more jobs to load')
+       return
     }
     fetchNextPage()
   };
@@ -90,7 +91,7 @@ export default function JobsList() {
         ))}
       </ListContainerAnimate>
       <div className="flex w-full mt-[3rem] sm:mt-[3.5rem] hover:brightness-150 transition-all duration-300">
-        {hasNextPage &&
+        {
         <button
           className="w-[8.8125rem] h-[3rem] rounded-md bg-[#5964E0] flex justify-center items-center text-4 font-bold text-white text-center mx-auto"
           onClick={loadMoreJobs}

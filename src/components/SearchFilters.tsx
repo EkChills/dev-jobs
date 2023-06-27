@@ -22,7 +22,7 @@ export default function SearchFilters() {
       <div className=" flex items-center px-4 justify-between fixed bg-white dark:bg-[#19202D] h-[80px] rounded-lg left-[1.5rem] right-[1.5rem]  top-[96px] sm:hidden z-20">
         <input
           type="text"
-          className="w-full bg-transparent outline-none placeholder:font-[400] placeholder:text-[1rem] placeholder:text-[hsl(0,0%,70%)]"
+          className="w-full bg-transparent outline-none placeholder:font-[400] placeholder:text-[1rem] placeholder:text-[hsl(0,0%,70%)] caret-[#5964E0] "
           placeholder="Filter by title..."
         />
         <div className="flex items-center space-x-6">

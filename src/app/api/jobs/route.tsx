@@ -27,13 +27,13 @@ export async function GET (req: Request) {
       } : undefined
     });
 
-    const nextCursor = jobs.length > 0 ? jobs[jobs.length - 1].id : null
+    const nextCursor = jobs.length >= 9 ? jobs[jobs.length - 1].id : null
 
     if(searchTerm) {
       const filteredJobs = jobs.filter((job:Job) => job.position.toLowerCase().replace('-', '').startsWith(searchTerm.toLowerCase()))
-      console.log(jobs);
-      console.log(filteredJobs); 
-      console.log(searchTerm);
+      // console.log(jobs);
+      // console.log(filteredJobs); 
+      // console.log(searchTerm);
       
       return NextResponse.json({ jobs:filteredJobs, nextCursor });
     }
