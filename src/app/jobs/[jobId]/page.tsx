@@ -1,3 +1,5 @@
+import DesktopJob from '@/components/ui/DesktopJob'
+import MobileJob from '@/components/ui/MobileJob'
 import { getJob } from '@/lib/getJobs'
 import { baseUrl } from '@/utils/baseUrl'
 import { error } from 'console'
@@ -25,8 +27,13 @@ export default async function SingleJob({params}:{params:{jobId:string}}) {
 
   
   return (
-    <div className='min-h-screen pt-[13rem]'>
-      {singleJob.job.description}
+    <div  className="px-[1.5rem] sm:px-[2.5rem] lg:px-[10.313rem] pb-[3.88rem] sm:pb-[10.31rem] lg:pb-[13rem] xl:px-[22.19rem]">
+      {singleJob.job && 
+      <>
+      <MobileJob {...singleJob.job} />
+      <DesktopJob {...singleJob.job} />
+      </>
+    }
     </div>
   )
 }
