@@ -10,7 +10,7 @@ const PageFooter = ({position, company}:Props) => {
         <h3 className="text-[1.25rem] font-bold text-[#19202D] dark:text-white">{position}</h3>
         <p className="text-base text-[#6E8098] font-medium">{company}</p>
       </div>
-      <button className="w-full bg-[#5964E0] text-base font-bold text-center h-[3rem] rounded-md sm:w-[8.8125rem] hover:brightness-125 transition-all duration-300">
+      <button className="w-full bg-[#5964E0] text-base text-white font-bold text-center h-[3rem] rounded-md sm:w-[8.8125rem] hover:brightness-125 transition-all duration-300">
         Apply Now 
       </button>
     </div>
