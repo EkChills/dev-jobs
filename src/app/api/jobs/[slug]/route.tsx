@@ -2,6 +2,7 @@ import data from '@/app/data.json'
 import { NextResponse } from 'next/server'
 import { prisma } from '../../../../../prisma/prisma'
 
+
 export async function GET (req:Request, {params}:{params:{slug:string}}) {
   try {
     const job = await prisma.job.findUnique({where: {
