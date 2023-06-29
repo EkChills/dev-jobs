@@ -10,6 +10,12 @@ type Job = {
   website: string;
   apply: string;
   description: string;
-  requirements: Prisma.JsonValue | null;
-  role: Prisma.JsonValue | null;
+  requirements: {
+    items:string[];
+    content:string;
+  } | JsonValue;
+  role: {
+    items:string[];
+    content:string;
+  } | JsonValue;
 }

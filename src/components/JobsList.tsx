@@ -41,7 +41,7 @@ export default function JobsList() {
       return data;
     },
     keepPreviousData: true,
-    retry: false,
+    staleTime:60000,
   });
 
 
@@ -95,6 +95,7 @@ export default function JobsList() {
         <button
           className="w-[8.8125rem] h-[3rem] rounded-md bg-[#5964E0] flex justify-center items-center text-4 font-bold text-white text-center mx-auto"
           onClick={loadMoreJobs}
+          disabled={isFetchingNextPage}
         >
           {isFetchingNextPage ? "loading jobs..." : "Load More"}
         </button>}

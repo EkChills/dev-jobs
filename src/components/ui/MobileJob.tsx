@@ -10,7 +10,7 @@ const MobileJob = ({logoBackground, logo, company, website}:Job) => {
       }}>
       <Image src={logo.slice(1)} width={48} height={48} alt={company}  className='' />
       </div>
-      <h3 className="font-bold text-[1.25rem]">{company}</h3>
+      <h3 className="font-bold text-[1.25rem] text-[#19202D] dark:text-white">{company}</h3>
       <p className="text-[#6E8098] font-medium text-[1rem] mt-[.8rem]">{company.replace(" ", "").toLowerCase() + '.com'}</p>
       <Link href={website} className="w-[9.1875rem] h-[3rem] text-center bg-[#5964E0] bg-opacity-[.10000000149011612] text-[#5964E0] mt-[1.69rem] flex items-center justify-center font-bold text-base capitalize rounded-[5px]">
         <p>company site</p>

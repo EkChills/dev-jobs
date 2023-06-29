@@ -10,7 +10,7 @@ const DesktopJob = ({logoBackground, logo, company, website}:Job) => {
           <Image src={logo.slice(1)} alt={company} height={23} width={81} />
         </div>
         <div className="flex flex-col space-y-[.81rem]">
-          <h4 className="text-[1.5rem] font-bold">{company}</h4>
+          <h4 className="text-[1.5rem] font-bold text-[#19202D] dark:text-white">{company}</h4>
           <p className="text-[#6E8098] font-medium text-[1rem] mt-[.8rem]">{company.replace(" ", "").toLowerCase() + '.com'}</p>
         </div>
       </div>
