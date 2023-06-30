@@ -18,7 +18,7 @@ export default function JobCard({postedAt, contract, position, location, logo, c
   }
   
   return (
-    <motion.div  className='flex flex-col rounded-md px-8 pb-8 pt-[49px] bg-white dark:bg-[#19202D] cursor-pointer relative -z-1 hover:shadow-xl transition-shadow duration-500' initial={{opacity:0}} whileInView={{opacity:1}} onClick={() => router.push(`/jobs/${id}`)} >
+    <motion.div  className='flex flex-col rounded-md px-8 pb-8 pt-[49px] bg-white dark:bg-[#19202D] cursor-pointer relative -z-1 hover:shadow-xl transition-shadow duration-500 select-text' initial={{opacity:0}} whileInView={{opacity:1}} onClick={() => router.push(`/jobs/${id}`)} >
       <div style={{backgroundColor:logoBackground}} className={`absolute top-[-1.5rem] left-[2rem] w-[3.125rem] h-[3.125rem] p-2 flex items-center justify-center rounded-xl bg-[${logoBackground.trim()}]`} >
       <Image src={logo} width={48} height={48} alt={company}  className='' />
       </div>

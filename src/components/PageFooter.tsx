@@ -4,6 +4,7 @@ company:string;
 }
 
 const PageFooter = ({position, company}:Props) => {
+  
   return (
     <div className="flex absolute inset-x-0 bottom-[-5rem] sm:bottom-0 min-h-[6rem] items-center justify-center sm:justify-between bg-white dark:bg-[#19202D] px-[1.5rem] sm:px-[2.5rem] lg:px-[10.313rem] xl:px-[22.19rem]">
       <div className="hidden sm:flex flex-col space-y-[.75rem] capitalize">
